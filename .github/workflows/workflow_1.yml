@@ -1,0 +1,22 @@
+name: Workflow_1
+on:
+  push:
+    branches:
+      - workflow_1
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout
+        with:
+          ref: workflow_1
+      - name: Install NodeJs
+        uses: actions/setup-node
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
