@@ -1,4 +1,4 @@
-name: Workflow-5
+name: Use-Reusable
 on:
   push:
     branches:
@@ -74,6 +74,13 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       artifact-name: dist-files
+
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy outcome
+        run: ${{ needs.deploy.outputs.result }}
 
   report:
     needs: [lint, deploy]
