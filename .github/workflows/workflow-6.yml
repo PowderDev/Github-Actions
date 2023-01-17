@@ -44,7 +44,7 @@ jobs:
           echo "MONGODB_USERNAME: $MONGODB_USERNAME"
 
   deploy:
-    needs: test
+    needs: server
     runs-on: ubuntu-latest
     steps:
       - name: Output information
